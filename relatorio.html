@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+    <link rel="stylesheet" href="relatorio.css">
+</head>
+<body>
+    
+    <div id="center">
+        <div id="informacoes">
+            <h2>Relatório de Dados Preenchidos</h2>
+            <p id="resultadoNomeTitular"></p>
+            <p id="resultadoCpfTitular"></p>
+            <p id="resultadoNomeFalecido"></p>
+            <p id="resultadoHorarioSepultamento"></p>
+            <p id="resultadoCausaMorte"></p>
+            <p id="resultadoRgChamador"></p>
+            <p id="resultadoPesoFalecido"></p>
+            <p id="resultadoReligiaFalecido"></p>
+            <p id="resultadoLocalCorpo"></p>
+            <p id="resultadoLiberacaoCorpo"></p>
+            <p id="resultadoResponsavelLiberacao"></p>
+            <p id="resultadoHorarioFalecimento"></p>
+            <p id="resultadoLocalVelorio"></p>
+            <p id="resultadoPresenteNoVelorio"></p>
+        </div>
+    </div>
+
+    <script>
+        function getParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                nometitularplano: params.get('nometitularplano'),
+                cpftitularplano: params.get('cpftitularplano'),
+                nomefalecido: params.get('nomefalecido'),
+                rgchamador: params.get('rgchamador'),
+                pesofalecido: params.get('pesofalecido'),
+                religiaofalecido: params.get('religiaofalecido'),
+                causadamorte: params.get('causadamorte'),
+                localcorpo: params.get('localcorpo'),
+                liberacaocorpo: params.get('liberacaocorpo'),
+                responsavelliberacao: params.get('responsavelliberacao'),
+                horariofalecimento: params.get('horariofalecimento'),
+                localvelorio: params.get('localvelorio'),
+                presentenovelorio: params.get('presentenovelorio'),
+                horariosepultamento: params.get('horariosepultamento')
+            };
+        }
+
+        function exibirRelatorio() {
+            const dados = getParams();
+
+            document.getElementById('resultadoNomeTitular').textContent = `Nome do titular do plano: ${dados.nometitularplano || 'Não informado'}`;
+            document.getElementById('resultadoCpfTitular').textContent = `CPF do titular: ${dados.cpftitularplano || 'Não informado'}`;
+            document.getElementById('resultadoNomeFalecido').textContent = `Nome do falecido: ${dados.nomefalecido || 'Não informado'}`;
+            document.getElementById('resultadoHorarioSepultamento').textContent = `Horário do sepultamento: ${dados.horariosepultamento || 'Não informado'}`;
+            document.getElementById('resultadoCausaMorte').textContent = `Causa da morte: ${dados.causadamorte || 'Não informada'}`;
+            document.getElementById('resultadoRgChamador').textContent = `RG do chamador: ${dados.rgchamador || 'Não informado'}`;
+            document.getElementById('resultadoPesoFalecido').textContent = `Peso do falecido: ${dados.pesofalecido || 'Não informado'}`;
+            document.getElementById('resultadoReligiaFalecido').textContent = `Religião do falecido: ${dados.religiaofalecido || 'Não informada'}`;
+            document.getElementById('resultadoLocalCorpo').textContent = `Local do corpo: ${dados.localcorpo || 'Não informado'}`;
+            document.getElementById('resultadoLiberacaoCorpo').textContent = `Liberação do corpo: ${dados.liberacaocorpo || 'Não informada'}`;
+            document.getElementById('resultadoResponsavelLiberacao').textContent = `Responsável pela liberação: ${dados.responsavelliberacao || 'Não informado'}`;
+            document.getElementById('resultadoHorarioFalecimento').textContent = `Horário do falecimento: ${dados.horariofalecimento || 'Não informado'}`;
+            document.getElementById('resultadoLocalVelorio').textContent = `Local do velório: ${dados.localvelorio || 'Não informado'}`;
+            document.getElementById('resultadoPresenteNoVelorio').textContent = `Presente no velório: ${dados.presentenovelorio || 'Não informado'}`;
+        }
+
+        window.onload = exibirRelatorio;
+
+    </script>
+
+</body>
+</html>
